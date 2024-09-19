@@ -1,1 +1,17 @@
+   ----------------Git-------------------------------------
+  Git  is a version control system .
+    Got to browser download git .
 
+   --------- ----- Open your terminal or command prompt.  -----------------
+   Type the following command for check git download or not ---------------
+  git -v
+many commands we will see later---------
+
+
+-----------------Github--------------------------------
+GitHub is a web-based platform . It provides a place for developers to host and collaborate on code, manage projects, and track changes.
+In github folder is called repository and changes is called commit.
+First we create repository then make file inside this repository and commit .
+
+
+    
