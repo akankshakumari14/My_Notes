@@ -1,1 +1,49 @@
+React is a JavaScript library for building user interfaces.
+React is used to build single-page applications.
 
+What is ES6?
+ES6 stands for ECMAScript 6.
+
+ECMAScript was created to standardize JavaScript, and ES6 is the 6th version of ECMAScript, it was published in 2015, and is also known as ECMAScript 2015.
+
+Why Should I Learn ES6?
+React uses ES6, and you should be familiar with some of the new features like:
+
+Classes
+Arrow Functions
+Variables (let, const, var)
+Array Methods like .map()
+Destructuring
+Modules
+Ternary Operator
+Spread Operator
+
+-----------Without Destructuring---------------------------
+var arr = ["Hello", "World"]  
+console.log([0]); // Hello  
+console.log([1]); // World 
+
+----------- With Destructuring---------------------------
+var arr = ["Hello", "World"]  
+  
+// destructuring assignment  
+var [first, second] = arr;  
+  
+console.log(first); // Hello  
+console.log(second); // World  
+
+
+-----------Create React App using vite-------------
+npm create vite@latest
+npm i
+
+-----------For start server-------------
+npm run dev 
+-----------Hooks------------------------
+useState
+useEffect
+useContext
+useRef
+useReducer
+useCallback
+useMemo
