@@ -47,3 +47,123 @@ useRef
 useReducer
 useCallback
 useMemo
+
+1) useState() -> It allows you to create and manage a state variable in a React functional component.
+
+-----------without usestate--------------
+import React from 'react'
+
+function WithoutState() {
+    var x=10;
+    function updateAk(){
+        x=15;
+        console.log(x);
+    }
+
+  return (
+    <>
+       <h1> akState{x}</h1>
+       <button onClick={updateAk}>Click</button>
+    </>
+  )
+}
+
+export default WithoutState
+
+------------usestate--------------
+import React, { useState } from 'react'
+
+function State() {
+    
+    const [x,setx]=useState(0);
+    function updateAk(){
+        setx(15);
+        console.log(x);
+    }
+  return (
+    <>
+        <h1>akState{x}</h1>
+        <button onClick={updateAk}>Click</button>
+    </>
+  )
+}
+
+export default State
+
+
+
+2) useEffect() -> 
+import React, { useState,useEffect } from 'react'
+
+function Effect() {
+    const [x,setx]=useState(10);
+    function updateAk(){
+        setx(x+1);
+    }
+    useEffect(function  mk(){ 
+            console.log(x);
+    },[x]);
+  return (
+    <>
+        <h1>akEffect{x}</h1>
+        <button onClick={updateAk}>Click</button>
+    </>
+  )
+}
+
+export default Effect
+
+3) useNavigate()
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+
+function Navi() {
+    const navigate = useNavigate();
+
+    function gotoAbout() {
+        navigate('/about');
+    }
+
+    return (
+        <>
+            <h1>Home</h1>
+            <button onClick={gotoAbout}>About</button>
+        </>
+    );
+}
+
+export default Navi;
+
+3) useRef() -> 
+import React, { useRef, useState } from 'react'
+
+function Ref() {
+  const refElement = useRef(null);
+  console.log(refElement);
+  const [name, setName] = useState("Akanksha");
+  
+  function handleChange(e){
+    setName(e.target.value);
+  }
+  
+  function reset() {
+    setName(" ");
+    refElement.current.focus();
+  }
+
+  function handleInput() {
+    refElement.current.style.color = "blue";
+  }
+  return (
+
+    <>
+      <input type="text" value={name} name="name" onChange={handleChange} ref={refElement}></input>  {/*html mein ref tag hota */}
+      <button onClick={reset}>Reset</button>
+      <button onClick={handleInput}>Submit</button>
+    </>
+  )
+}
+
+export default Ref
+
+4) Memo()
