@@ -1,6 +1,14 @@
 React is a JavaScript library for building user interfaces.
 React is used to build single-page applications.
 
+WHY USE REACT?
+  1.  component based - for clean and reuse code
+  2.  virtual dom  - not update the whole page only updated the  the which is changed
+  3.  single page application  - not reload the page
+  4.  state manage - like this time counter=1 ya 2 ya 3 
+  5.  hooks  - it is inbuild feature 
+  6.  props  - data communication(send)
+
 What is ES6?
 ES6 stands for ECMAScript 6.
 
