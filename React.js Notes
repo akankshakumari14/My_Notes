@@ -79,26 +79,32 @@ function WithoutState() {
 }
 
 export default WithoutState
+----------------------output => not change x value on screen only change in console.
 
 ------------usestate--------------
 import React, { useState } from 'react'
 
 function State() {
-    
-    const [x,setx]=useState(0);
-    function updateAk(){
-        setx(15);
-        console.log(x);
+    const [x, setx] = useState(0); // Line 1: Declaring state  -  execution starts here
+
+    function updateAk() {
+        setx(15); // Line 2: Updating state
+        console.log(x); // Line 3: Logging state
     }
-  return (
-    <>
-        <h1>akState{x}</h1>
-        <button onClick={updateAk}>Click</button>
-    </>
-  )
+
+    return (
+        <>
+            <h1>akState{x}</h1> {/* Line 4: Rendering */}
+            <button onClick={updateAk}>Click</button> {/* Line 5: Button */}
+        </>
+    );
 }
 
-export default State
+export default State;
+
+
+export default State    
+----------------------output => Also change x value on screen also change in console.
 
 
 
