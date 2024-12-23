@@ -85,25 +85,23 @@ export default WithoutState
 import React, { useState } from 'react'
 
 function State() {
-    const [x, setx] = useState(0); // Line 1: Declaring state  -  execution starts here
+    const [x, setx] = useState(0); // Line 1: State initialize hoti hai
 
     function updateAk() {
-        setx(15); // Line 2: Updating state
-        console.log(x); // Line 3: Logging state
+        setx(15); // Line 2: State ko update karne ka kaam schedule hota hai
+        console.log(x); // Line 3: Current state ko console mein log karte hain
     }
 
     return (
         <>
-            <h1>akState{x}</h1> {/* Line 4: Rendering */}
-            <button onClick={updateAk}>Click</button> {/* Line 5: Button */}
+            <h1>akState{x}</h1> {/* Line 4: JSX render hota hai */}
+            <button onClick={updateAk}>Click</button> {/* Line 5: Button render hota hai */}
         </>
     );
 }
 
 export default State;
-
-
-export default State    
+  
 ----------------------output => Also change x value on screen also change in console.
 
 
