@@ -85,7 +85,7 @@ export default WithoutState
 import React, { useState } from 'react'
 
 function State() {
-    const [x, setx] = useState(0); // Line 1: State initialize hoti hai
+    const [x, setx] = useState(0); // Line 1: State initialize hoti hai - start flow of execution.
 
     function updateAk() {
         setx(15); // Line 2: State ko update karne ka kaam schedule hota hai
