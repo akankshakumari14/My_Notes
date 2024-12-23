@@ -1,5 +1,6 @@
 React is a JavaScript library for building user interfaces.
 React is used to build single-page applications.
+It is developed by fb , person name jordan in 2011 , open source in 2013.
 
 WHY USE REACT?
   1.  component based - for clean and reuse code ,  using this no duplicacy code
