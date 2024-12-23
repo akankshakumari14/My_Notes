@@ -104,6 +104,20 @@ export default State;
   
 ----------------------output => Also change x value on screen also change in console.
 
+--------------Flow of Lines (Order of Execution)------------------------------
+Initial Render:
+Line 1: const [x, setx] = useState(0);
+Line 4: <h1>akState{x}</h1>
+Line 5: <button onClick={updateAk}>Click</button>
+
+After Button Click:
+Line 2: setx(15); (Schedules state update)
+Line 3: console.log(x); (Logs the old value, 0)
+
+Re-render Starts:
+Line 1: useState runs with updated x (15).
+Line 4: <h1>akState15</h1> renders.
+Line 5: Button re-renders.
 
 
 2) useEffect() -> 
