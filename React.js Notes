@@ -103,12 +103,13 @@ function State() {
 export default State;
   
 ----------------------output => Also change x value on screen also change in console.
-
+// component are local update means agr same component ko boht time call krde aur jis component button pe click krenge usi component ka value update dusre component ka nhi.
 --------------Flow of Lines (Order of Execution)------------------------------
 Initial Render:
 Line 1: const [x, setx] = useState(0);
 Line 4: <h1>akState{x}</h1>
 Line 5: <button onClick={updateAk}>Click</button>
+my-line - And , whenever the updateAk function update the value then after this whole component re-render .
 
 After Button Click:
 Line 2: setx(15); (Schedules state update)
