@@ -244,5 +244,10 @@ Here’s the process for passing data using a **slug URL** in points:
 
 
 
+       // for checking error
+
+       error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 
 
