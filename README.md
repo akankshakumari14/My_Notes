@@ -219,7 +219,181 @@ ex-2-with return:  ###
 
 ### let result = add(5, 3); // No return value
 
-### console.log(result); // Output: undefined
+### console.log(result); // Output: undefined\
+
+
+
+
+
+
+
+
+
+## string methods
+
+
+
+### 1.)  length - It is property , returns no. of characters .
+
+let ak = "akanksha";
+
+let ans = ak.length;
+
+console.log(ans);
+
+                         output - 8
+
+
+### 2.)   toUpperCase() - It is method , returns uppercase.
+
+let ak = "akanksha";
+
+let ans = ak.toUpperCase();
+
+console.log(ans);
+
+                    output - AKANKSHA
+
+
+
+### 3.)   toLowerCase() - It is method , returns lowercase.
+
+
+
+### 4.)   trim() - It is method , remove extra space .
+
+let ak = "   akanksha   ";
+
+let ans = ak.trim();
+
+console.log(ans);
+  
+                     output - akanksha
+
+### 5.)  includes() - It is method , checks if given string is found inside  as string and give boolean value .
+
+let ak = "akanksha";
+
+let ans = ak.includes("a");  // if  ak.includes(" ")  i.e also true 
+
+console.log(ans);
+
+
+                   output - true
+
+
+
+
+
+
+## Number methods
+
+### math - math is an object so we can use dot notation . 
+
+console.log(Math.PI);  // 3.141592653589793
+
+console.log(Math.E);   // 2.718281828459045 (Euler’s number)
+
+console.log(Math.LN2);   // 0.6931471805599453 (Natural log of 2)
+
+console.log(Math.min(10, 2, 5, 8)); // 2
+
+console.log(Math.ceil(4.5)); // 5   ceil means up
+
+console.log(Math.floor(4.5)); //  4   floor means remove decimal part
+
+console.log(Math.round(4.3)); //  4  round means nearest
+
+console.log(Math.pow(2, 3)); // 8 (2^3)
+
+console.log(Math.sqrt(25));  // 5 (√25)
+
+
+### Random Number Generation
+
+console.log(Math.random()); // Random number between 0 and 1
+
+console.log(Math.floor(Math.random() * 10) + 1); // Random number between 1 and 10
+
+
+### otp generation 
+
+function generateOTP() {
+
+    return Math.floor(1000 + Math.random() * 9000);
+
+}
+
+console.log(generateOTP()); // Example output: 5738
+
+
+
+Step 1: Math.random()
+
+Math.random() generates a random decimal number between 0 (inclusive) and 1 (exclusive).
+
+
+Step 2: Multiply by 9000
+
+Math.random() * 9000 scales the value to between 0 and 8999.
+
+Example:
+console.log(Math.random() * 9000); 
+
+Now, we have a random number between 0 and 8999.
+
+
+Step 3: Add 1000
+
+1000 + Math.random() * 9000 shifts the range to between 1000 and 9999.
+
+Example:
+
+console.log(1000 + Math.random() * 9000);
+// Example output: 5794.3
+
+
+Now, the number is always at least 1000.
+
+
+
+
+### Array - It is an object that is used to store elements of different datatypes . 
+
+let mixedArray = ["Hello", 42, true, null, undefined ];
+
+console.log(mixedArray);
+
+
+output:
+
+[
+  "Hello", 
+  42, 
+  true, 
+ null,
+undefined
+]
+
+
+### Accessing Elements
+
+You can access different elements using their index:
+
+
+console.log(mixedArray[0]); // "Hello" (String)
+
+console.log(mixedArray[1]); // 42 (Number)
+
+console.log(mixedArray[2]); // true (Boolean)
+
+console.log(mixedArray[3]); // true (null)
+
+console.log(mixedArray[4]); // true (undefined)
+
+
+
+
 
 
 
