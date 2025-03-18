@@ -393,6 +393,8 @@ console.log(mixedArray[4]); // true (undefined)
 
 
 
+Arrow Function :- remove function keyword and  add => after ()  and  store in variable.
+
 
 
 
