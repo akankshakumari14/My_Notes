@@ -1,6 +1,8 @@
 React is a JavaScript library for building user interfaces.
 React is used to build single-page applications.
 It is developed by fb , person name jordan in 2011 , open source in 2013.
+Example : A website like Facebook,whatsapp,insta uses React to update only the parts of the page that change, without reloading the entire page.
+
 
 WHY USE REACT?
   1.  component based - for clean and reuse code ,  using this no duplicacy code
@@ -9,6 +11,14 @@ WHY USE REACT?
   4.  state manage - like this time counter=1 ya 2 ya 3 
   5.  hooks  - it is inbuild feature 
   6.  props  - data communication(send)
+
+virtual dom?
+React creates a virtual DOM — it's just a copy of the real DOM in memory.
+When the data (state/props) changes, React:Updates the virtual DOM first
+Compares the new virtual DOM with the old one (called "diffing")
+React then updates only the changed parts in the real DOM — not the whole page.
+jbv koi action (like click, input, etc.) hota to new virtual dom bnta
+
 
 What is ES6?
 ES6 stands for ECMAScript 6.
@@ -48,6 +58,12 @@ npm i
 
 -----------For start server-------------
 npm run dev 
+
+---------why npm i -------------------
+node_modules/	Saare installed packages (React, etc.)
+package-lock.json	Package versions ka full record
+package.json	Already hota hai – isi se npm read karta hai
+
 
 -----------Hooks------------------------
 useState
