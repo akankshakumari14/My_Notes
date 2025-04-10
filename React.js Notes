@@ -64,6 +64,8 @@ node_modules/	Saare installed packages (React, etc.)
 package-lock.json	Package versions ka full record
 package.json	Already hota hai – isi se npm read karta hai
 
+In react we use className instead of class.
+Hooks - Hooks are special functions.
 
 -----------Hooks------------------------
 useState
@@ -117,6 +119,7 @@ function State() {
 }
 
 export default State;
+
   
 ----------------------output => Also change x value on screen also change in console.
 // component are local update means agr same component ko boht time call krde aur jis component button pe click krenge usi component ka value update dusre component ka nhi.
@@ -135,6 +138,35 @@ Re-render Starts:
 Line 1: useState runs with updated x (15).
 Line 4: <h1>akState15</h1> renders.
 Line 5: Button re-renders.
+
+
+ex-2 - counter increment,decrement
+
+import React, { useState } from 'react'
+
+
+function App() {
+  const [x, setx] = useState(1)
+
+  const incre = () => {
+    setx(x + 1)
+  }
+
+  const decre = () => {
+    setx(x - 1)
+  }
+  return (
+    <div>
+      <h1 className="text-gray-900">Counter App</h1>
+      <h3>Count: {x}</h3>
+      <button className="bg-sky-50" onClick={incre}>Increment</button>
+      <button onClick={decre}>Decrement</button>
+    </div>
+
+  )
+}
+
+export default App
 
 
 2) useEffect() -> 
@@ -212,3 +244,38 @@ function Ref() {
 export default Ref
 
 4) Memo()
+
+
+
+
+-----------Tailwind css - It is framework ------------------
+Go to google, search tailwind css, then get started , then using vite choose, and follow the steps.
+
+
+------------Form Handling--------------------
+import React, { useState } from 'react'
+
+function App() {
+
+  const [username, setUsername] = useState('')
+  const valueChange = (e) => {
+    setUsername(e.target.value)
+  }
+  const submitHandler = (e) => {
+    e.preventDefault()          // stops the page from reloading,ye nhi likhte to page reload hojata aur console value show nhi ho pata reload ke karan
+    console.log(username)       // prints the name in console
+    setUsername('')             // clears the input box
+  }
+
+  return (
+    <div>
+      <form onSubmit={submitHandler}>
+        <input type="text" placeholder='Enter Your Name' value={username} onChange={valueChange}></input>
+        {/* agr onChange event nhi chlate to input box mein mein likh paate jo intial value pass ho rha hota useState mein sirf whi show hota input box mein,aisa kr paa rhe ye hua two binding and form handling */}
+        <button type='submit'>Submit</button>
+      </form>
+    </div>
+  )
+}
+
+export default App
