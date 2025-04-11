@@ -279,3 +279,74 @@ function App() {
 }
 
 export default App
+
+
+------------components-------------
+make components folder inside src folder
+Make file  using first letter capital then import in App.jsx and pass also.
+
+
+🔹 What are props?
+Props (short for properties) are like function arguments in JavaScript. They are used to pass data from one component (usually parent) to another (usually child).
+
+In App.jsx
+
+import Header from './Header';
+
+function App() {
+  return (
+    <div>
+      <Header name="Akanksha" />
+    </div>
+  );
+}
+
+
+
+In Header.jsx
+
+function Header(props) {
+  return <h1>Hello, {props.name}!</h1>
+}
+export default Header;
+
+
+
+---------------prop drilling-------------------------
+App.jsx se props pass krte Header.jsx mein fir Header.jsx se pass krte Footer.jsx mein
+
+In App.jsx
+
+function App() {
+  return (
+    <>
+      <Header name="ak" />
+
+    </>
+  )
+}
+
+
+In Header.jsx
+
+function Header(props) {
+    return (
+        <>
+            <div>{props.name} Header</div>
+
+            <Footer user={props.name} />
+
+        </>
+
+    )
+
+}
+
+
+
+In Footer.jsx
+function Footer(props) {
+    return (
+        <div>{props.user} Footer</div>
+    )
+}
