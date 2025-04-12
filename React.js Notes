@@ -350,3 +350,43 @@ function Footer(props) {
         <div>{props.user} Footer</div>
     )
 }
+
+
+------------------------------------axios-----------------------------------
+axios se humlog data catch krte jo api laake deta.
+Before use axios , we need to install using npm i axios.
+And import in our component.
+
+
+import React, { useState } from 'react'
+import axios from 'axios'
+function App() {
+
+  const [data, setdata] = useState([])
+  const getdata = async () => {
+    const response = await axios.get("https://picsum.photos/v2/list?page=2&limit=10")
+    const data = response.data
+    console.log(data)
+    setdata(data)
+
+  }
+  return (
+    <div>
+      <button onClick={getdata}>Get Data</button>
+
+      {
+        data.map(function (ele, ind) {
+          return <div key={ind} style={{ display: "flex" }}>
+            <img src={ele.download_url} style={{ height: "300px", width: "600px" }} />
+            <span>{ele.author}</span>
+          </div>
+        })
+      }
+    </div>
+  )
+}
+
+export default App
+
+
+---------axios.get se data receive kr rhe jo api se aa rha , yha humlog loreum pseum api se laa rhe
