@@ -77,6 +77,13 @@ useCallback
 useMemo
 
 1) useState() -> It allows you to create and manage a state variable in a React functional component.
+syntax - 
+
+const [stateVariable, setStateFunction] = useState(initialValue);
+
+stateVariable: The current value.
+setStateFunction: Function to update the value.
+initialValue: The starting value (e.g. 0, "", false, [], {}).
 
 -----------without usestate--------------
 import React from 'react'
@@ -103,17 +110,17 @@ export default WithoutState
 import React, { useState } from 'react'
 
 function State() {
-    const [x, setx] = useState(0); // Line 1: State initialize hoti hai - start flow of execution.
+    const [x, setx] = useState(0); 
 
     function updateAk() {
-        setx(15); // Line 2: State ko update karne ka kaam schedule hota hai
-        console.log(x); // Line 3: Current state ko console mein log karte hain
+        setx(15); 
+        console.log(x); 
     }
 
     return (
         <>
-            <h1>akState{x}</h1> {/* Line 4: JSX render hota hai */}
-            <button onClick={updateAk}>Click</button> {/* Line 5: Button render hota hai */}
+            <h1>akState{x}</h1> 
+            <button onClick={updateAk}>Click</button> 
         </>
     );
 }
@@ -123,21 +130,25 @@ export default State;
   
 ----------------------output => Also change x value on screen also change in console.
 // component are local update means agr same component ko boht time call krde aur jis component button pe click krenge usi component ka value update dusre component ka nhi.
---------------Flow of Lines (Order of Execution)------------------------------
-Initial Render:
-Line 1: const [x, setx] = useState(0);
-Line 4: <h1>akState{x}</h1>
-Line 5: <button onClick={updateAk}>Click</button>
-my-line - And , whenever the updateAk function update the value then after this whole component re-render .
 
-After Button Click:
-Line 2: setx(15); (Schedules state update)
-Line 3: console.log(x); (Logs the old value, 0)
 
-Re-render Starts:
-Line 1: useState runs with updated x (15).
-Line 4: <h1>akState15</h1> renders.
-Line 5: Button re-renders.
+🔁Flow of Execution:
+step 1: component render hoga
+step 2: useState(0) ke karan x ka value 0 se initialise hoga
+step 3: akState{x} ke karan akState0 show hoga screen pe
+step 4:  button pe click krenge to updateAk function call hoga 
+step 5: setx(15) ke karan x ka value update krne ka kaam schedule hoga
+step 5: console.log x mein 0 hoga
+step7: ab component re-render hoga 
+step 8: component re-render hote hi state ka value update hojayega aur 15 hojayega
+step 9: useState(15) hojayega , useState(0) ke jgh
+step 10: akState{x} ke karan akState15 show hoga screen pe ab 
+step 11: fir firse updateAk function call hoga aur set(x) chlega
+step 12: console. log 15 hojayega
+-- aise hi chlta rhega steps
+Note: -  whenever the updateAk function update the value then after this whole component re-render .
+
+
 
 
 ex-2 - counter increment,decrement
@@ -169,7 +180,19 @@ function App() {
 export default App
 
 
-2) useEffect() -> 
+2) useEffect() -> useEffect is a React Hook that lets you run side effects in your components.
+💡 Side effects examples:
+Fetching data from an API
+Changing the page title
+Setting a timer
+Working with localStorage
+
+
+useEffect(() => {
+  // Code here runs after the component renders
+}, [dependencies]);
+
+
 import React, { useState,useEffect } from 'react'
 
 function Effect() {
@@ -189,6 +212,17 @@ function Effect() {
 }
 
 export default Effect
+
+🔁Flow of Execution:
+step 1: component render hoga
+step 2: useState(10) ke karan x ka value 10 se initialise hoga
+step 3: useEffect chlega aur console.log(x) ke karan 10 print hoga
+step 4: akEffect{x} ke karan akEffect 10 show hoga screen pe
+step 5:  button pe click krenge to updateAk function call hoga 
+step 6: updateAk chlega jisme x ka value 1 se increase hoga
+step 7: fir component re-render hoga
+step 8: useState 11 hojayega , usseEffect chlega aur console.log 11 hojayega aur akEffect 11 show hoga fir buuton click aur repaeat steps.
+
 
 3) useNavigate()
 import React from 'react';
@@ -244,6 +278,63 @@ function Ref() {
 export default Ref
 
 4) Memo()
+
+ 5) useContext - It is used for access global data without using props.
+in props we pass data from parent to  first child then second child  , so this way we passed the data from parent to second child , isme faltu ak first child data accept kiya ussse need nhi tha tbv.
+in useContext we can directly pass the parent to second child without passing the first child.
+
+
+Real Life use -
+Theme (dark/light)
+Auth info (user login)
+Language (i18n)
+
+
+- 3 steps for using useContext
+----------------------------------------------
+step 1: create Context using createContext()
+Step 2: wrap all the child inside a provider
+step 3: pass value
+step 4: consumer k andr jaakr consume kro
+step 5 : jha create kr rhe context wha se export v kro 
+
+In App.jsx:-
+import React, { createContext, useState } from 'react'
+import ChildA from './components/ChildA'
+
+const AkContext = createContext()
+function App() {
+
+  const [mk, setMk] = useState({ name: "maunti" })
+  return (
+    <>
+      <AkContext.Provider value={mk}>
+        <ChildA />
+      </AkContext.Provider>
+
+    </>
+  )
+}
+
+
+export default App
+export { AkContext }
+--------------------------------------
+In ChildB.jsx :-
+
+import React, { useContext } from 'react'
+import { AkContext } from '../App'
+
+function ChildB() {
+    const mkk = useContext(AkContext)
+    return (
+        <div>
+            dataaa : {mkk.name}
+        </div>
+    )
+}
+
+export default ChildB
 
 
 
