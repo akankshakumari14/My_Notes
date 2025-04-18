@@ -77,6 +77,7 @@ useCallback
 useMemo
 
 1) useState() -> It allows you to create and manage a state variable in a React functional component.
+----------------
 syntax - 
 
 const [stateVariable, setStateFunction] = useState(initialValue);
@@ -181,6 +182,8 @@ export default App
 
 
 2) useEffect() -> useEffect is a React Hook that lets you run side effects in your components.
+---------------
+
 💡 Side effects examples:
 Fetching data from an API
 Changing the page title
@@ -224,7 +227,35 @@ step 7: fir component re-render hoga
 step 8: useState 11 hojayega , usseEffect chlega aur console.log 11 hojayega aur akEffect 11 show hoga fir buuton click aur repaeat steps.
 
 
-3) useNavigate()
+3) useNavigate() -> When you click a button, and you want it to take the user to another page—like this:
+-----------------
+
+=> install react-router-dom - npm i react-router-dom
+=>  In App.jsx
+
+
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import Navi from './components/Navi'
+import About from './components/About';
+
+
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Navi />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
+    </Router>
+  );
+}
+
+export default App;
+
+
+=>In Navi.jsx
+
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -245,7 +276,25 @@ function Navi() {
 
 export default Navi;
 
-3) useRef() -> 
+
+In About.jsx
+
+import React from 'react';
+
+function About() {
+    return (
+        <div>
+            <p>You've navigated here using useNavigate!</p>
+        </div>
+    );
+}
+
+export default About;
+
+
+
+4) useRef() -> 
+------------------
 import React, { useRef, useState } from 'react'
 
 function Ref() {
@@ -277,9 +326,11 @@ function Ref() {
 
 export default Ref
 
-4) Memo()
+5) Memo() ->
+------------
 
- 5) useContext - It is used for access global data without using props.
+ 6) useContext - It is used for access global data without using props.
+----------------
 in props we pass data from parent to  first child then second child  , so this way we passed the data from parent to second child , isme faltu ak first child data accept kiya ussse need nhi tha tbv.
 in useContext we can directly pass the parent to second child without passing the first child.
 
