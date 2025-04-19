@@ -183,6 +183,7 @@ export default App
 
 2) useEffect() -> useEffect is a React Hook that lets you run side effects in your components.
 ---------------
+-> jb useEffect mein depencies array n ho to hrr ek render pe chlta and sara function,element render ke baad execute hoga.
 
 💡 Side effects examples:
 Fetching data from an API
@@ -293,8 +294,143 @@ export default About;
 
 
 
-4) useRef() -> 
+4) useRef() ->In this 2 case ,   first is -> It is just like useState but in this value update without re-render.
+note -> current ka use krna hota isse render nhi hota aur value persit krta render krne pe v agr state ke karan re-render hota tbv.
+syntax- const myRef = useRef(initialValue);
+myRef → yeh ek object return karta hai jiska ek property hota hai: current
+initialValue → yeh current ka starting value hota hai
+
+second is -> Dom mein changes
+
+
 ------------------
+
+                                              case 1:
+                                    ------------------------------------
+
+
+without useRef with simple variable-------------
+import React, { useEffect, useState } from 'react'
+
+function App() {
+  const [count, setCount] = useState(0);
+  let val = 1
+
+  function handleIncrement() {
+    val = val + 1
+    console.log("value of val :", val)
+    setCount(count + 1)
+  }
+
+  useEffect(() => {
+    console.log("i am showing every render")
+  })
+  return (
+    <>
+      <button onClick={handleIncrement}>Increment</button>
+      <p>count:{count}</p>
+    </>
+  )
+}
+
+export default App
+-------------------------------------------------------------
+
+
+with useRef-------------------
+import React, { useEffect, useRef, useState } from 'react'
+
+function App() {
+  const [count, setCount] = useState(0);
+
+  let val = useRef(0)
+
+  function handleIncrement() {
+    val.current = val.current + 1
+    console.log("value of val :", val.current)
+    setCount(count + 1)
+  }
+
+  useEffect(() => {
+    console.log("i am showing every render")
+  })
+  return (
+    <>
+      <button onClick={handleIncrement}>Increment</button>
+      <p>count:{count}</p>
+    </>
+  )
+}
+
+export default App
+
+
+Flow of execution:-
+✅ 1. Jab app start hoti hai (First time load hota hai):
+count ka value 0 se start hota hai.
+
+val.current bhi 0 hota hai.
+
+Button aur text screen par dikhte hain.
+
+Console mein ek baar print hota hai:
+➤ "i am showing every render"
+
+🖱️ 2. Jab tum button pe click karte ho:
+val.current ka value 1 ho jata hai.
+➤ Console: "value of val : 1"
+
+count ka value 1 ho jata hai (state update hoti hai).
+
+Component dobara render hota hai.
+
+Screen par updated count dikhta hai: ➤ count: 1
+
+Console mein fir se print hota hai:
+➤ "i am showing every render"
+
+🔁 3. Har click par ye hi repeat hota hai:
+val.current badhta hai (2, 3, 4...).
+
+count badhta hai (2, 3, 4...).
+
+Component re-render hota hai.
+
+Console mein 2 cheezein print hoti hain:
+
+value of val : x
+i am showing every render 
+----------------------------------------------------------------------------------------------------------
+
+case 2
+---------------------
+ex-1- 
+import React, { useEffect, useRef } from 'react'
+
+function App() {
+  let btnRef = useRef()
+
+  function changeColor() {
+    btnRef.current.style.background = "red"
+  }
+  useEffect(() => {
+    console.log("i am showing every render")
+  })
+  return (
+    <>
+      <button ref={btnRef}>Increment</button><br></br>
+      <button onClick={changeColor}>Change bgcolor of 1st button</button>
+
+    </>
+  )
+}
+
+export default App
+
+----isme button ko select krne ke liye koi getElementById ya class jrurt nhi h bs  let btnRef = useRef() and ref={btnRef} ye likh kr button select hojayega jis button pe changes krna ho and ref hi likhna jrurti h yha ref={btnRef}.
+
+--------------------------------
+ex-2
 import React, { useRef, useState } from 'react'
 
 function Ref() {
