@@ -28,6 +28,18 @@ ECMAScript was created to standardize JavaScript, and ES6 is the 6th version of 
 Why Should I Learn ES6?
 React uses ES6, and you should be familiar with some of the new features like:
 
+JSX
+JSX stands for JavaScript XML.
+In jsx we can write html js code in a function.
+
+In reactjs 
+in  event is camel case and in js not normal case.
+in react for calling function only only function name use not () not use .
+ 
+for react version change npm i react@rc
+for react dom change npm i react-dom@rc
+now you can see package.json in depencies version changed.
+
 Classes
 Arrow Functions
 Variables (let, const, var)
@@ -76,6 +88,8 @@ useReducer
 useCallback
 useMemo
 
+in react using normal variable function variable not update on UI.
+in react variable update only after component re render.
 1) useState() -> It allows you to create and manage a state variable in a React functional component.
 ----------------
 syntax - 
