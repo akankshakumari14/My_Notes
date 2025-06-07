@@ -242,6 +242,71 @@ step 7: fir component re-render hoga
 step 8: useState 11 hojayega , usseEffect chlega aur console.log 11 hojayega aur akEffect 11 show hoga fir buuton click aur repaeat steps.
 
 
+:
+
+🔄 React Lifecycle Phases-------------
+1. Mounting (Component is created)
+ ->componentDidMount / useEffect(() => {}, []) – runs after component appears on screen
+
+import React, { useEffect } from 'react';
+
+function Example1() {
+  useEffect(() => {
+    console.log('Component Mounted');
+  }, []); // Empty array => sirf ek baar run (mount par)
+
+  return <h2>Hello, World!</h2>;
+}
+
+
+2. Updating (State or props change)
+  ->componentDidUpdate / useEffect(() => {}, [dependencies]) – runs after update
+
+import React, { useState, useEffect } from 'react';
+
+function Example2() {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    console.log('Count updated:', count);
+  }, [count]); // count jab change ho tab run ho
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+    </div>
+  );
+}
+
+
+3. Unmounting (Component is removed)
+  ->componentWillUnmount / useEffect(() => { return () => {} }, []) – cleanup tasks (like removing timers, event listeners)
+
+import React, { useEffect } from 'react';
+
+function Example3() {
+  useEffect(() => {
+    console.log('Component Mounted');
+
+    return () => {
+      console.log('Component Unmounted');
+    };
+  }, []);
+
+  return <h2>This component will log on unmount</h2>;
+}
+
+
+
+| Phase   | Hook (Function Component)                  |
+| ------- | ------------------------------------------ |
+| Mount   | `useEffect(() => {}, [])`                  |
+| Update  | `useEffect(() => {}, [dependencies])`      |
+| Unmount | `useEffect(() => { return () => {} }, [])` |
+
+
+
 3) useNavigate() -> When you click a button, and you want it to take the user to another page—like this:
 -----------------
 
