@@ -40,6 +40,8 @@ for react version change npm i react@rc
 for react dom change npm i react-dom@rc
 now you can see package.json in depencies version changed.
 
+ in reactjs execcution start from before return.
+
 Classes
 Arrow Functions
 Variables (let, const, var)
