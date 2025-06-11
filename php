@@ -1,3 +1,133 @@
+---------------------------------Insert code start---------------------------------------------------------------
+if (isset($_POST['submit'])) {
+    $question = $_POST['question'];
+    $answer = $_POST['answer'];
+
+    $query = mysqli_query($con, "INSERT INTO faq(question,answer) values('$question', '$answer')");
+    if ($query) {
+        echo "<script>alert('FAQs Added Successfully');</script>";
+    } else {
+        echo "<script>alert('FAQs Added Failed');</script>";
+    }
+}
+
+ <form class="row needs-validation" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" novalidate enctype="multipart/form-data">
+                                                <div class="mb-3 position-relative">
+                                                    <label class="form-label" for="validationCustom01">Question</label>
+                                                    <input type="text" class="form-control" required name="question" placeholder="Enter Question" />
+                                                    <div class="valid-tooltip">
+                                                        Looks good!
+                                                    </div>
+                                                </div>
+
+                                                <div class="mb-3 position-relative">
+                                                    <label class="form-label">Answer</label>
+                                                    <div>
+                                                        <textarea rows="5" placeholder="Enter Answer" class="form-control" required name="answer"></textarea>
+                                                    </div>
+                                                </div>
+
+                                                <div class="mb-0">
+                                                    <div>
+                                                        <button type="submit" name="submit" class="btn btn-pink waves-effect waves-light">
+                                                            Submit
+                                                        </button>
+                                                        <button type="reset" class="btn btn-secondary waves-effect ms-1">
+                                                            Cancel
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </form>
+
+ <a href="edit_faq.php?id=<?php echo $row['id']; ?>" class="btn btn-warning btn-xs"><i class="fa fa-edit"></i> <b>Edit</b></a>
+<a href="delete.php?faq=<?php echo $row['id']; ?>" class="text-danger" onclick="return confirm('Are you sure you want to delete this item?');"><button class="btn btn-danger">&nbsp<i class="fa fa-trash"></i> Delete</button></i></a>
+
+---------------------------------Insert code End---------------------------------------------------------------
+
+
+--------------------------------update code start--------------------------------------------------------------
+
+// =================================================================================||
+// ============================= FETCH FAQs CODE STARTS HERE =======================||
+// =================================================================================||
+$id = $_GET['id'];
+$sql = mysqli_query($con, "SELECT * FROM faq where id='" . $id . "'");
+$result = mysqli_fetch_assoc($sql);
+$question = $result['question'];
+$answer = $result['answer'];
+// =================================================================================||
+// ============================= FETCH FAQs CODE ENDS HERE =========================||
+// =================================================================================||
+
+// =================================================================================||
+// ============================= EDIT FAQs CODE STARTS HERE ========================||
+// =================================================================================||
+if (isset($_POST['submit'])) {
+    $question = $_POST['question'];
+    $answer = $_POST['answer'];
+    $update_id = $_POST['update_id'];
+
+    $sql = mysqli_query($con, "UPDATE faq SET question='$question', answer='$answer' WHERE id='$update_id'");
+
+    if ($sql) {
+        echo "<script>alert('FAQs Updated Successfully'); window.location.href='faq.php';</script>";
+    } else {
+        echo "<script>alert('Failed: " . mysqli_error($con) . "');</script>";
+    }
+}
+// =================================================================================||
+// =============================== EDIT FAQs CODE STARTS HERE ======================||
+// =================================================================================||
+
+
+  <form class="row needs-validation" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+
+                                        <div class="mb-3 position-relative">
+                                            <label class="form-label">Name</label>
+                                            <input type="text" class="form-control" name="question" value="<?php echo $question; ?>" />
+                                            <div class="valid-tooltip">
+                                                Looks good!
+                                            </div>
+                                        </div>
+
+                                        <div class="mb-3 position-relative">
+                                            <label class="form-label">Answer</label>
+                                            <div>
+                                                <textarea rows="5" placeholder="Enter Answer" class="form-control" required name="answer"><?php echo $answer; ?></textarea>
+                                            </div>
+                                        </div>
+
+                                        <input type="hidden" value="<?php echo $id; ?>" name="update_id">
+
+                                        <div class="mb-0">
+                                            <div>
+                                                <button type="submit" value="update" name="submit" class="btn btn-pink waves-effect waves-light">
+                                                    Update
+                                                </button>
+                                                <button type="reset" class="btn btn-secondary waves-effect ms-1">
+                                                    Cancel
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+
+-----------------------------------------Update code end--------------------------------------------------------------------
+
+
+-----------------------------------------Delete code start--------------------------------------------------------------------
+if ($id = $_GET['faq']) {
+    $query = mysqli_query($con, "DELETE from faq where id='$id'");
+    if ($query) {
+        echo "<script>alert('FAQs Deleted Successfully'); window.location.href='faq.php'</script>";
+    } else {
+        echo "<script>alert('FAQs Deleted Failed'); window.location.href='faq.php'</script>";
+    }
+}
+-----------------------------------------Delete code end--------------------------------------------------------------------
+
+
+
+
 ----------------------------------fetch without loop ------------------------------------------------------
     <?php
         $query = mysqli_query($con , "select * from slider ");
@@ -31,16 +161,6 @@
                         </div>
                         <?php } ?>
                     </div>
-
----------------------------------- delete code ------------------------------------------------------
-if ($id = $_GET['course']) {
-    $query = mysqli_query($con, "DELETE from course where id='$id'");
-    if ($query) {
-        echo "<script>alert('Course Deleted Successfully'); window.location.href='manage_course.php'</script>";
-    } else {
-        echo "<script>alert('Course Deleted Failed'); window.location.href='manage_course.php'</script>";
-    }
-}
 
 
 
@@ -172,81 +292,9 @@ function readURL2(input) {
 
 
 
+// for checking error
 
-
-for id pass in url
-Here’s the explanation rewritten in points:
-
-1. **Fetch Data in `file1.php`:**  
-   Retrieve user data from the database.  
-   Example: `$sql = "SELECT id, name FROM users";`
-
-2. **Display Data as Links:**  
-   Show each user as a clickable link, with their `id` passed in the URL.  
-   Example: `<a href='file2.php?id=".$row['id']."'>`
-
-3. **Retrieve `id` in `file2.php`:**  
-   Get the `id` from the URL using the `$_GET` superglobal in PHP.  
-   Example: `$id = $_GET['id'];`
-
-4. **Query Database with Retrieved `id`:**  
-   Use the retrieved `id` to fetch detailed information for the specific user.  
-   Example: `$sql = "SELECT * FROM users WHERE id = $id";`
-
-
-
-// for slug url pass in a url
-
-Here’s the process for passing data using a **slug URL** in points:
-
-1. **Add a `slug` Field to Your Table:**
-   - Ensure the database includes a `slug` column (e.g., in the `users` table).
-   - Example table structure:
-     ```
-     id | name    | slug
-     --------------------
-     1  | John    | john-doe
-     2  | Jane    | jane-doe
-     ```
-
-2. **Fetch Data in `file1.php`:**
-   - Retrieve user data, including the `slug`, from the database.
-   - Example query:  
-     ```php
-     $sql = "SELECT name, slug FROM users";
-     ```
-
-3. **Display Data as Links with Slugs:**
-   - Show each user as a clickable link, passing the `slug` in the URL.
-   - Example:  
-     ```php
-     <a href='file2.php?slug=<?php echo $row["slug"]; ?>'>
-         <?php echo $row["name"]; ?>
-     </a>
-     ```
-
-4. **Retrieve `slug` in `file2.php`:**
-   - Get the `slug` from the URL using the `$_GET` superglobal.
-   - Example:  
-     ```php
-     $slug = $_GET['slug'];
-     ```
-
-5. **Query Database Using the `slug`:**
-   - Fetch detailed information for the specific user by matching the `slug`.
-   - Example query:  
-     ```php
-     $sql = "SELECT * FROM users WHERE slug = '$slug'";
-     ```
-
----
-
-
-
-
-       // for checking error
-
-       error_reporting(E_ALL);
+error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 
