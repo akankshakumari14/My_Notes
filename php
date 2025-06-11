@@ -1,3 +1,23 @@
+<?php
+// Database connection details
+$servername = "localhost";  // Usually 'localhost'
+$username = "root";         // MySQL username
+$password = "";             // MySQL password (empty if no password)
+$database = "pr1";          // Name of your database
+
+// Create the connection
+$conn = mysqli_connect($servername, $username, $password, $database);
+
+// Check the connection
+if (!$conn) {
+    // If connection fails, display error message
+    die("Connection failed: " . mysqli_connect_error());
+} else {
+    // If connection is successful, display a success message
+    echo "Connected successfully";
+}
+?>
+
 ---------------------------------Insert code start---------------------------------------------------------------
 if (isset($_POST['submit'])) {
     $question = $_POST['question'];
