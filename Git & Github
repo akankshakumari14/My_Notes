@@ -1,4 +1,4 @@
-Git
+Git---------------
 
 Version Control System is a tools that helps to track changes in code
 
@@ -9,3 +9,14 @@ popular
 free & Open Source
 
 fast & scalable
+
+
+Github ---------------------------
+
+Website that allows developers to store and manage their code using Git.
+
+✏️ folder (Repository)
+
+https://github.com
+
+for readme.md we using html syntax like  br tag for new line.
