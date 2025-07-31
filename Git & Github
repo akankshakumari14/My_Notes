@@ -45,6 +45,7 @@ git config --list
 
 ~ → root directory → folder
 
+***********************In vs code terminal after install git bash**********************************
 
 Clone & Status-----------------------------------------
 
@@ -57,6 +58,42 @@ remote → [GitHub]
 local → [laptop / PC]
 
 
-status – displays the state of the code
+status –--------------------  displays the state of the code
 
 git status
+
+untracked
+new files that git doesn't yet track
+
+modified
+changed
+
+staged
+file is ready to be committed
+
+unmodified
+unchanged
+
+
+Add & Commit-----------------------------
+
+add – adds new or changed files in your working directory to the Git staging area.
+
+git add <- file name ->
+
+
+commit – it is the record of change
+
+git commit -m "some message"
+
+
+Push Command--------------------------------------
+
+push – upload local repo content to remote repo
+
+git push origin main
+push: Local repository ke changes ko remote repository mein bhejne ke liye.
+
+origin: Remote repository ka naam (default naam origin hota hai).
+
+main: Branch ka naam jise push karna hai (pehle master hota tha, ab main use hota hai).
