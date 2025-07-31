@@ -20,3 +20,25 @@ Website that allows developers to store and manage their code using Git.
 https://github.com
 
 for readme.md we using html syntax like  br tag for new line.
+
+
+Setting up Git-----------------------------
+
+Visual Studio Code
+
+Windows (Git Bash)
+
+Mac (Terminal)
+
+git --version
+
+
+Configuring Git -----------------------------
+
+git config --global user.name "My Name"
+
+git config --global user.email "someone@email.com"
+
+git config --list
+
+
