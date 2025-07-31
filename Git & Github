@@ -1,5 +1,7 @@
 Git---------------
 
+repositirt means  folder.
+
 Version Control System is a tools that helps to track changes in code
 
 Git is a Version Control System. It is :
@@ -42,3 +44,19 @@ git config --global user.email "someone@email.com"
 git config --list
 
 ~ → root directory → folder
+
+
+Clone & Status-----------------------------------------
+
+Clone – Cloning a repository on our local machine
+git clone <– that folder link –>
+
+
+remote → [GitHub]
+
+local → [laptop / PC]
+
+
+status – displays the state of the code
+
+git status
