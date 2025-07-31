@@ -41,4 +41,4 @@ git config --global user.email "someone@email.com"
 
 git config --list
 
-
+~ → root directory → folder
