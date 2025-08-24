@@ -1,3 +1,36 @@
+1. CREATE DATABASE
+CREATE DATABASE mydb;
+
+2. USE DATABASE
+USE mydb;
+
+3. CREATE TABLE
+CREATE TABLE students (id INT PRIMARY KEY, name VARCHAR(50), age INT);
+
+4. INSERT DATA
+INSERT INTO students (id, name, age) VALUES (1, 'Akanksha', 21);
+
+5. SELECT DATA
+SELECT * FROM students;
+
+6. UPDATE DATA
+UPDATE students SET age = 22 WHERE id = 1;
+
+7. DELETE DATA  - DELETE DATA (👉 सिर्फ table के अंदर के selected records delete करता है)
+DELETE FROM students WHERE id = 1;
+
+8. DROP TABLE - DROP TABLE (👉 पूरी table structure + data दोनों delete हो जाते हैं, table खत्म हो जाता है
+DROP TABLE students;
+
+9. ALTER TABLE   - add new column in table 
+ALTER TABLE students ADD email VARCHAR(100);
+
+TRUNCATE TABLE (👉 सारी rows delete हो जाती हैं लेकिन table structure बचा रहता है)
+
+10. TRUNCATE TABLE
+TRUNCATE TABLE students;
+
+
 <?php
 // Database connection details
 $servername = "localhost";  // Usually 'localhost'
