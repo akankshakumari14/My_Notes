@@ -12,6 +12,24 @@ WHY USE REACT?
   5.  hooks  - it is inbuild feature 
   6.  props  - data communication(send)
 
+Benefits of ReactJS
+• Component-based → Reusable UI pieces
+• Virtual DOM → Faster rendering
+• Declarative → Easier to read & maintain
+• Large Community → Plenty of libraries & support
+• Cross-platform → Web + React Native for mobile
+• Strong Ecosystem → Works with Node.js, APIs, etc.
+
+Popular Companies using ReactJS
+
+• Facebook
+• Instagram
+• Netflix
+• Airbnb
+• PayPal
+• Dropbox
+• Uber
+
 virtual dom?
 React creates a virtual DOM — it's just a copy of the real DOM in memory.
 When the data (state/props) changes, React:Updates the virtual DOM first
@@ -65,6 +83,11 @@ var [first, second] = arr;
 console.log(first); // Hello  
 console.log(second); // World  
 
+-----------Before react use-------------------
+Node is neccessary
+
+------------For check node is install or not type -----------------
+ node -v
 
 -----------Create React App using vite-------------
 npm create vite@latest
