@@ -57,8 +57,27 @@ in react for calling function only only function name use not () not use .
 for react version change npm i react@rc
 for react dom change npm i react-dom@rc
 now you can see package.json in depencies version changed.
-
+in package.json all dependencies/library inside dependencies we can change.
+in package-lock.json all dependencies/libraries version and more detail we should change in this file.
+in readme.md we can write instruction about the project.
  in reactjs execcution start from before return.
+
+JavaScript--------
+const element = document.createElement("h1");
+element.textContent = "Hello, JavaScript!";
+
+JSX------------
+const element = <h1>Hello, React!</h1>;
+
+ReactJS---------
+const element = React.createElement('h1', null, 'Hello, React!');
+
+JavaScript Expressions--------
+const name = "YahuBaba";
+const element = <h1>Hello, {name}!</h1>;
+
+Attribute Naming in camelCase
+const button = <button onClick={handleClick}>Click Me</button>;
 
 Classes
 Arrow Functions
