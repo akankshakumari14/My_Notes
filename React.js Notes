@@ -79,6 +79,25 @@ const element = <h1>Hello, {name}!</h1>;
 Attribute Naming in camelCase
 const button = <button onClick={handleClick}>Click Me</button>;
 
+Array
+Array is used to store multiple values in one variable in an ordered list.
+Example:
+let fruits = ["Apple", "Banana", "Mango"];
+👉 Access by index:
+fruits[0]; // Apple
+
+
+Object
+Object is used to store data in key : value pairs.
+Example:
+let student = {
+  name: "Akanksha",
+  age: 22
+};
+👉 Access by key:
+student.name; // Akanksha
+
+
 Classes
 Arrow Functions
 Variables (let, const, var)
