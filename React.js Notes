@@ -750,12 +750,49 @@ function App() {
 
 In Header.jsx
 
-function Header(props) {
+function Header(props) {  // here props is object
     return (
         <>
             <div>{props.name} Header</div>
 
             <Footer user={props.name} />
+
+        </>
+
+    )
+
+}
+
+
+
+In Footer.jsx
+function Footer(props) {
+    return (
+        <div>{props.user} Footer</div>
+    )
+}
+
+
+Using destructuring way of props most famous---------------
+
+In App.jsx
+
+function App() {
+  return (
+    <>
+      <Header name="ak" age={}/>
+
+    </>
+  )
+}
+
+In Header.jsx
+function Header({name,age}) {  // using destructuring props  , and we can't update in name and age 
+    return (
+        <>
+            <div>{name} Header</div>
+
+            <Footer user={age} />
 
         </>
 
