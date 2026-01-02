@@ -121,6 +121,79 @@ var [first, second] = arr;
 console.log(first); // Hello  
 console.log(second); // World  
 
+----------------{isVisible && <p>This is secret message</p>}------------------------
+This is conditional rendering in React.
+It means show something only when a condition is true. 
+
+&& (Logical AND Operator)
+
+JavaScript rule:
+If left side is true, right side executes
+If left side is false, nothing executes
+
+
+If isVisible is true, show the message.
+If isVisible is false, show nothing.
+
+ Example with useState
+const [isVisible, setIsVisible] = useState(false);
+{isVisible && <p>This is secret message</p>}
+
+
+-------------------spread operator---------------------------
+1. What is Spread Operator?
+
+Spread operator (...) is used to open / copy values of array or object.
+
+👉 It spreads values one by one.
+
+2. Spread Operator in Array
+Copy Array
+const a = [1, 2, 3];
+const b = [...a];
+
+
+✔️ New copy created
+✔️ a is safe
+
+Add new value
+const a = [1, 2];
+const b = [...a, 3];
+
+
+Result:
+
+[1, 2, 3]
+
+Merge Arrays
+const a = [1, 2];
+const b = [3, 4];
+
+const c = [...a, ...b];
+
+
+Result:
+
+[1, 2, 3, 4]
+
+3. Spread Operator in Object
+Copy Object
+const user = { name: "Akanksha", age: 22 };
+const newUser = { ...user };
+
+Update Object Value
+const user = { name: "Akanksha", age: 22 };
+
+const updatedUser = {
+  ...user,
+  age: 23
+};
+
+
+✔️ Only age changed
+
+
+
 -----------Before react use-------------------
 Node is neccessary
 
