@@ -337,8 +337,10 @@ export default App
 
 💡 Side effects examples:
 Fetching data from an API
+updating dom manually
+add/remove events
+setting up timers (e.g, setInterval,SetTimeout)
 Changing the page title
-Setting a timer
 Working with localStorage
 
 
