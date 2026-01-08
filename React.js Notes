@@ -3,7 +3,23 @@ React is used to build single-page applications.
 It is developed by fb , person name jordan in 2011 , open source in 2013.
 Example : A website like Facebook,whatsapp,insta uses React to update only the parts of the page that change, without reloading the entire page.
 
+<StrictMode> - It is good to use in development mode, in production mode it is not use.
 
+->It helps you find mistakes while developing, so your app becomes better and safer.
+
+In very simple points:
+1️⃣ Finds old/unsafe code
+→ Tells you: “This way is not good, update it.”
+2️⃣ Runs code twice (only in dev)
+→ To check if you forgot to clean something (like timers, API calls).
+3️⃣ Shows warnings for outdated features
+→ “This feature will be removed later.”
+4️⃣ Helps for future React versions
+→ Your app will not break easily in new updates.
+5️⃣ Only in development
+→ No effect in production (live website).   
+
+  
 WHY USE REACT?
   1.  component based - for clean and reuse code ,  using this no duplicacy code
   2.  virtual dom  - not update the whole page only updated the  the which is changed
@@ -348,6 +364,19 @@ useEffect(() => {
   // Code here runs after the component renders
 }, [dependencies]);
 
+useEffect(() => {
+
+  return () => {
+
+  };
+
+}, [dependencies]);
+Cleanup Function
+
+Purpose of return :
+Clearing timers.
+Unsubscribing from streams or APIs.
+Removing event listeners.
 
 import React, { useState,useEffect } from 'react'
 
