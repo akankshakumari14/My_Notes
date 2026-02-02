@@ -1,7 +1,13 @@
-React is a JavaScript library for building user interfaces.
+ReactJS is a component-based JavaScript library for building user interfaces.
 React is used to build single-page applications.
 It is developed by fb , person name jordan in 2011 , open source in 2013.
 Example : A website like Facebook,whatsapp,insta uses React to update only the parts of the page that change, without reloading the entire page.
+
+Component - A React component is a JavaScript function that returns HTML (JSX). It is reusable piece of code.
+component is live with props and state.
+-> Two types of components -
+class based component
+Functional based component
 
 <StrictMode> - It is good to use in development mode, in production mode it is not use.
 
@@ -19,11 +25,11 @@ In very simple points:
 5️⃣ Only in development
 → No effect in production (live website).   
 
-  
-WHY USE REACT?
+-> React is unidirectional that means data pass throgh parenrt to child.
+WHY USE REACT
   1.  component based - for clean and reuse code ,  using this no duplicacy code
   2.  virtual dom  - not update the whole page only updated the  the which is changed
-  3.  single page application  - not reload the page
+  3.  single page application  - not reload the page(ek hi html file hoti usi mein  sara component show hoota.)
   4.  state manage - like this time counter=1 ya 2 ya 3 
   5.  hooks  - it is inbuild feature 
   6.  props  - data communication(send)
@@ -48,10 +54,9 @@ Popular Companies using ReactJS
 
 virtual dom?
 React creates a virtual DOM — it's just a copy of the real DOM in memory.
-When the data (state/props) changes, React:Updates the virtual DOM first
-Compares the new virtual DOM with the old one (called "diffing")
+When the data (state/props) changes, React:creates a new virtual DOM first .Compares the new virtual DOM with the old one (called "diffing")
 React then updates only the changed parts in the real DOM — not the whole page.
-jbv koi action (like click, input, etc.) hota to new virtual dom bnta
+jbv koi action (like click, input, etc.) hota to new virtual dom bnta.
 
 
 What is ES6?
@@ -77,6 +82,26 @@ in package.json all dependencies/library inside dependencies we can change.
 in package-lock.json all dependencies/libraries version and more detail we should change in this file.
 in readme.md we can write instruction about the project.
  in reactjs execcution start from before return.
+
+--------------------------------------------------------
+import React from 'react';
+
+function App() {
+  return (
+    <div>
+      <h1>Hello, World!</h1>
+    </div>
+  );
+}
+export default App;
+
+------------------------------------------------------------------
+In this example:
+import React from 'react': Imports React to create components and use JSX.
+function App() { ... }: Defines a functional component called App.
+return ( ... ): Returns JSX that represents the UI (a div with an h1 tag displaying "Hello, World!").
+export default App: Exports the App component so it can be used elsewhere.
+
 
 JavaScript--------
 const element = document.createElement("h1");
