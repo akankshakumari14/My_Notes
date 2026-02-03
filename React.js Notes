@@ -7,7 +7,7 @@ Component - A React component is a JavaScript function that returns HTML (JSX). 
 component is live with props and state.
 -> Two types of components -
 class based component
-Functional based component
+Functional based component - It is function which return react element or html like code
 
 <StrictMode> - It is good to use in development mode, in production mode it is not use.
 
@@ -70,18 +70,184 @@ React uses ES6, and you should be familiar with some of the new features like:
 JSX
 JSX stands for JavaScript XML.
 In jsx we can write html js code in a function.
+👉 It allows us to write HTML inside JavaScript
+
+💡 Simple Meaning:JSX helps us design UI easily inside React.
+
+->Normal JavaScript UI (Without JSX)
+const element = React.createElement("h1", {id:1}, "Hello User");  //😓 Difficult to read.
+                                      |    |        |
+                                     Tag   props    children(content)
+->Using JSX
+const element = <h1>Hello User</h1>;  //😊 Easy to understand.
+
+⭐ 1. WITHOUT REACT (Pure JavaScript)
+👉 Here we manually create element and show on screen.
+Example:
+<!DOCTYPE html>
+<html>
+<body>
+<div id="root"></div>
+<script>
+  // Create element
+  const heading = document.createElement("h1");
+
+  // Add text
+  heading.innerText = "Hello Without React";
+
+  // Render on screen
+  document.getElementById("root").appendChild(heading);
+</script>
+
+</body>
+</html>
+
+🧠 What Happens Here?
+
+Step 1 → Create HTML element
+Step 2 → Add content
+Step 3 → Attach element to DOM
+
+👉 Everything is manual and becomes messy in big apps.
+
+⭐ 2. WITH REACT (Without JSX)
+React gives a method called:
+👉 React.createElement()
+
+Example:
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+</head>
+<body>
+<div id="root"></div>
+<script>
+  // Create element using React
+  const element = React.createElement(
+    "h1",
+    null,
+    "Hello With React"
+  );
+  // Render on screen
+  const root = ReactDOM.createRoot(document.getElementById("root"));
+  root.render(element);
+</script>
+</body>
+</html>
+
+🧠 Flow Here
+React.createElement → Creates Virtual DOM element
+ReactDOM.render → Shows on browser
+
+⭐ 3. WITH REACT + JSX (Modern & Most Used)
+JSX makes code easier.
+
+Example (App.jsx)-------------------------
+function App() {
+  return <h1>Hello Using JSX</h1>;
+}
+export default App;
+
+Rendering (main.jsx)----------------
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App.jsx";
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <App />
+);
+
+🧠 Important Truth (Interview Question)
+👉 JSX is NOT understood by browser directly.
+
+It converts into:
+JSX → React.createElement() → Browser
+
+
+🧠 Why We Need Tools for Create React App?
+React directly browser mein run nahi hota.
+
+Because React uses:
+JSX
+Modules
+Modern JavaScript
+
+👉 Browser directly samajh nahi pata.
+So we use: Bundler
+
+📦 What is Bundler?
+👉 Bundler = Tool that combines and prepares code to run in browser.
+Example
+
+You write:
+React code
+CSS
+Images
+Multiple JS files
+
+Bundler will:
+✔ Combine files
+✔ Optimize code
+✔ Convert JSX into JavaScript
+✔ Make code browser friendly
+
+🌟 Popular Bundlers
+Bundler	Speed	Usage
+Webpack	Slow	Old React
+Parcel	Medium	Less used
+Vite	Very Fast ⚡	Modern React
+
+->in vite bunder  code flow -> .html-> main.jsx -> App.jsx
 
 In reactjs 
 in  event is camel case and in js not normal case.
 in react for calling function only only function name use not () not use .
- 
+
+for build run command npm run build and dist folder created .This dist folder is deploy on production level.
 for react version change npm i react@rc
 for react dom change npm i react-dom@rc
 now you can see package.json in depencies version changed.
 in package.json all dependencies/library inside dependencies we can change.
 in package-lock.json all dependencies/libraries version and more detail we should change in this file.
 in readme.md we can write instruction about the project.
- in reactjs execcution start from before return.
+ in reactjs execution start from before return.
+
+🤔 Jab aap kisi ka project lete ho (GitHub se, zip me, etc.)
+Project ke folder me usually ye cheezein hoti hain:
+package.json ✅
+node_modules ❌ (missing hota hai)
+
+❓ node_modules kyun nahi hota?
+Kyunki node_modules folder bahut heavy hota hai
+Isliye log GitHub par upload nahi karte
+
+📦 package.json kya batata hai?
+package.json me likha hota hai:
+Project ko kaun‑kaun se packages chahiye
+Unke versions
+
+Example:
+"dependencies": {
+  "express": "^4.18.2",
+  "mongoose": "^7.0.0"
+}
+
+🚀 npm i (ya npm install) kya karta hai?
+Jab aap terminal me project folder ke andar likhte ho: npm i
+
+To npm:
+package.json padhta hai 📖
+Usme jo dependencies likhi hoti hain
+Un sabko internet se download karta hai 🌐
+node_modules folder bana deta hai 📁
+
+👉 Matlab project run hone layak ho jaata hai
+
+😵 Agar npm i na karo to?
+require('express') error dega ❌
+Cannot find module jaisi errors aayengi
+Project start hi nahi hoga
 
 --------------------------------------------------------
 import React from 'react';
