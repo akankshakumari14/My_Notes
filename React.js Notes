@@ -199,6 +199,28 @@ Parcel	Medium	Less used
 Vite	Very Fast ⚡	Modern React
 
 ->in vite bunder  code flow -> .html-> main.jsx -> App.jsx
+->🔹 What is Babel in React JS?
+      Babel is a JavaScript compiler.
+
+✅ Why Babel is used in React?
+React uses modern JavaScript features like:JSX
+ES6+ syntax (arrow functions, let/const, classes, etc.)
+But ❗ All browsers do not understand these modern features.
+👉 So Babel converts them into normal JavaScript.
+👉 Simple meaning:
+Babel converts new/modern JavaScript code into old JavaScript code that browsers understand.
+
+🔹 Where Babel Is Used?
+You usually don’t install Babel separately in modern React projects.
+👉 Tools like: Vite,Create React App,Webpack
+Already use Babel internally.
+
+React Code (JSX + Modern JS)
+          ↓
+        Babel
+          ↓
+ Browser Understandable JavaScript
+
 
 In reactjs 
 in  event is camel case and in js not normal case.
@@ -249,8 +271,13 @@ require('express') error dega ❌
 Cannot find module jaisi errors aayengi
 Project start hi nahi hoga
 
+🔹 Types of Import & Export in React / JavaScript
+There are 2 main types:
+1. Named Export / Named Import
+2. Default Export / Default Import
+
 --------------------------------------------------------
-import React from 'react';
+import React from 'react'; 
 
 function App() {
   return (
@@ -259,7 +286,7 @@ function App() {
     </div>
   );
 }
-export default App;
+export default App;  // default export
 
 ------------------------------------------------------------------
 In this example:
@@ -663,6 +690,25 @@ function Example3() {
 | Update  | `useEffect(() => {}, [dependencies])`      |
 | Unmount | `useEffect(() => { return () => {} }, [])` |
 
+🔹 Types of Import & Export in React / JavaScript
+There are 2 main types:
+1. Named Export / Named Import
+2. Default Export / Default Import
+
+⭐ Fragment Kya Hota Hai?
+👉 Fragment React ka ek special wrapper hai
+👉 Ye multiple elements ko group karta hai
+👉 Extra div create nahi karta
+
+function App() {
+  return (
+    <>
+      <h1>Hello</h1>
+      <p>Welcome</p>
+    </>
+  );
+}
+
 
 
 3) useNavigate() -> When you click a button, and you want it to take the user to another page—like this:
@@ -674,23 +720,22 @@ function Example3() {
 
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import Navi from './components/Navi'
+import Navi from './components/Navi'  // default import    // name import import {Navi as ak} from './components/Navi'
 import About from './components/About';
-
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Navi />} />
+        <Route path="/" element={<Navi />} />   //ak
         <Route path="/about" element={<About />} />
       </Routes>
     </Router>
   );
 }
 
-export default App;
-
+export default App;    // default export
+ 
 
 =>In Navi.jsx
 
