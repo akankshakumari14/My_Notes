@@ -1065,11 +1065,59 @@ function App() {
 
 In Header.jsx
 
-function Header(props) {
-  return <h1>Hello, {props.name}!</h1>
+function Header(props) {  //using destructuring {name} in place of props
+  return <h1>Hello, {props.name}!</h1> // using destructuring {title} in place of {props.name}
 }
 export default Header;
 
+
+-> inside return in jsx code use js code or variable use {} for write . 
+-> inside return in jsx   we can't use for,white,do loop, if-else   so we use map
+import React from "react";
+
+function Product(props) {
+  return (
+    <div>
+      <h2>{props.title}</h2>
+      <p>Price: ₹{props.price}</p>
+    </div>
+  );
+}
+
+function App() {
+
+  const shoeData = [
+    { id: 1, title: "Nike Shoes", price: 2000 },
+    { id: 2, title: "Puma Shoes", price: 1500 },
+    { id: 3, title: "Adidas Shoes", price: 2500 }
+  ];
+
+  return (
+    <div>
+      <h1>Shoe List</h1>
+
+      {shoeData.map((data) => (
+        <Product
+          key={data.id} // key is  used for uniquely identify.
+          title={data.title}
+          price={data.price}
+        />
+      ))}  // 1st way
+
+shoeData.map((data) => {
+   return <Product title={data.title} price={data.price} />; // 2nd way
+})
+
+shoeData.map((data) => (
+   <Product title={data.title} price={data.price} /> //3rd way
+))
+
+
+    </div>
+  );
+}
+
+export default App;
 
 
 ---------------prop drilling-------------------------
