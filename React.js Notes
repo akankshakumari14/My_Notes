@@ -34,6 +34,12 @@ WHY USE REACT
   5.  hooks  - it is inbuild feature 
   6.  props  - data communication(send)
 
+✅ DOM kya hota hai? (Interview me simple answer)
+👉 DOM ka full form Document Object Model hota hai.
+👉 Ye HTML page ko tree structure me represent karta hai.
+👉 JavaScript DOM ka use karke webpage ke content, style aur elements ko change kar sakta hai.
+
+
 Benefits of ReactJS
 • Component-based → Reusable UI pieces
 • Virtual DOM → Faster rendering
@@ -57,7 +63,7 @@ React creates a virtual DOM — it's just a copy of the real DOM in memory.
 When the data (state/props) changes, React:creates a new virtual DOM first .Compares the new virtual DOM with the old one (called "diffing")
 React then updates only the changed parts in the real DOM — not the whole page.
 jbv koi action (like click, input, etc.) hota to new virtual dom bnta.
-
+->“Reconciliation is the process where React compares Virtual DOM with Real DOM and updates only the changed elements.”
 
 What is ES6?
 ES6 stands for ECMAScript 6.
