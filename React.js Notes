@@ -1017,6 +1017,18 @@ export default ChildB
 -----------Tailwind css - It is framework ------------------
 Go to google, search tailwind css, then get started , then using vite choose, and follow the steps.
 
+Controlled Components
+An input form element whose value is controlled by React in this way is called a “controlled component”.
+
+flow:- 
+  User Typing
+     ↓
+onChange Event
+     ↓
+State Update
+     ↓
+Input Value Update
+
 
 ------------Form Handling--------------------
 import React, { useState } from 'react'
@@ -1024,19 +1036,20 @@ import React, { useState } from 'react'
 function App() {
 
   const [username, setUsername] = useState('')
-  const valueChange = (e) => {
+  function valueChange (e){
     setUsername(e.target.value)
   }
-  const submitHandler = (e) => {
-    e.preventDefault()          // stops the page from reloading,ye nhi likhte to page reload hojata aur console value show nhi ho pata reload ke karan
-    console.log(username)       // prints the name in console
+
+ function submitHandler (e) {
+    e.preventDefault()          // stops the page from reloading,ye nhi likhte to page reload hojata  , because form  ka default behaviour hi hota reloading jisse aur page refresh hota
+    console.log(username)       // prints the name in console 
     setUsername('')             // clears the input box
   }
 
   return (
     <div>
       <form onSubmit={submitHandler}>
-        <input type="text" placeholder='Enter Your Name' value={username} onChange={valueChange}></input>
+        <input type="text" placeholder='Enter Your Name' value={username} onChange={valueChange}></input>  //value={username}  ye control hua,if aise likhte to  value={""} ya nhi likhte to value show nhi hota type krne pe v input qki aise hardcoded hua . 
         {/* agr onChange event nhi chlate to input box mein mein likh paate jo intial value pass ho rha hota useState mein sirf whi show hota input box mein,aisa kr paa rhe ye hua two binding and form handling */}
         <button type='submit'>Submit</button>
       </form>
