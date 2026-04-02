@@ -5,12 +5,12 @@ Example : A website like Facebook,whatsapp,insta uses React to update only the p
 
 Component - A React component is a JavaScript function that returns HTML (JSX). It is reusable piece of code.
 component is live with props and state.
+
 -> Two types of components -
 class based component
-Functional based component - It is function which return react element or html like code
+Functional based component - It is JavaScript function that returns JSX, which is used to render UI elements on the screen.
 
 <StrictMode> - It is good to use in development mode, in production mode it is not use.
-
 ->It helps you find mistakes while developing, so your app becomes better and safer.
 
 In very simple points:
