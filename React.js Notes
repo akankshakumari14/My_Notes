@@ -950,7 +950,126 @@ function Ref() {
 
 export default Ref
 
-5) Memo() ->
+5) Memo() ->useMemo is a React hook that is used to store (memoize) a calculated value so it does not recompute on every render unless dependencies change.
+
+🔷 Why do we need useMemo?
+👉 In React:
+Component re-renders many times
+Heavy calculations run again and again ❌
+
+👉 So we use:
+useMemo → run calculation only when needed ✅
+🔷 Basic Syntax
+useMemo(() => {
+  return value;
+}, [dependencies]);
+
+
+
+
+❌ Without useMemo
+import React, { useState } from "react";
+
+function App() {
+  const [count, setCount] = useState(0);
+
+  function multiply(num) {
+    console.log("Calculating...");
+    return num * 2;
+  }
+
+  const result = multiply(count);
+
+  return (
+    <div>
+      <h2>{result}</h2>
+      <button onClick={() => setCount(count + 1)}>Click</button>
+    </div>
+  );
+}
+
+
+✅ With useMemo
+import React, { useState, useMemo } from "react";
+
+function App() {
+  const [count, setCount] = useState(0);
+
+  const result = useMemo(() => {
+    console.log("Calculating...");
+    return count * 2;
+  }, [count]);
+
+  return (
+    <div>
+      <h2>{result}</h2>
+      <button onClick={() => setCount(count + 1)}>Click</button>
+    </div>
+  );
+}
+
+👇
+
+🔷 Code Flow (Execution Step by Step)
+🟢 Step 1: Component Load (First Render)
+
+👉 App() function call होता है
+useState(0) → count = 0
+useMemo run होता है (first time always run)
+console.log("Calculating...");
+return count * 2; // 0 * 2 = 0
+👉 result = 0
+
+🟢 Step 2: UI Render
+👉 Screen पर दिखेगा:
+0
+[Click Button]
+
+🟢 Step 3: Button Click
+👉 User button click करता है:
+setCount(count + 1);
+👉 count = 1 हो जाता है
+👉 Component फिर से re-render होता है
+
+
+🟢 Step 4: Re-render + useMemo Check
+👉 React check करता है dependency:
+[count]
+👉 Old value = 0
+👉 New value = 1 ✅ (changed)
+
+👉 इसलिए useMemo दुबारा run होगा:
+Calculating...
+return 1 * 2 = 2
+👉 result = 2
+
+🟢 Step 5: Updated UI
+👉 Screen पर दिखेगा:
+2
+🔷 Important Concept 🔥
+
+👉 अगर dependency change नहीं होती तो:
+
+❌ useMemo दुबारा नहीं चलता
+✅ पुराना value reuse होता है
+
+
+🔷 What happens here?
+👉 useMemo:
+Runs calculation only when count changes
+Otherwise → uses saved value
+
+
+🔷 When to use?
+Use when:
+Heavy calculations
+Filtering large lists
+Sorting big data
+
+⚠️ When NOT to use
+👉 Don’t use for:
+Simple logic
+Small apps
 ------------
 
  6) useContext - It is used for access global data without using props.
@@ -1217,44 +1336,79 @@ function Footer(props) {
 }
 
 
-------------------------------------axios-----------------------------------
-axios se humlog data catch krte jo api laake deta.
-Before use axios , we need to install using npm i axios.
-And import in our component.
+------------------------------------Fetch-----------------------------------
+Fetch is a built-in JavaScript method used to make HTTP requests and get data from APIs.”
 
 
-import React, { useState } from 'react'
-import axios from 'axios'
+import React, { useState } from "react";
+
 function App() {
+  const [data, setdata] = useState([]);
 
-  const [data, setdata] = useState([])
   const getdata = async () => {
-    const response = await axios.get("https://picsum.photos/v2/list?page=2&limit=10")
-    const data = response.data
-    console.log(data)
-    setdata(data)
+    const response = await fetch("https://picsum.photos/v2/list?page=2&limit=10");
+    const data = await response.json(); // convert to JSON
+    console.log(data);
+    setdata(data);
+  };
 
-  }
   return (
     <div>
       <button onClick={getdata}>Get Data</button>
 
-      {
-        data.map(function (ele, ind) {
-          return <div key={ind} style={{ display: "flex" }}>
-            <img src={ele.download_url} style={{ height: "300px", width: "600px" }} />
+      {data.map((ele, ind) => {
+        return (
+          <div key={ind} style={{ display: "flex" }}>
+            <img
+              src={ele.download_url}
+              style={{ height: "300px", width: "600px" }}
+            />
             <span>{ele.author}</span>
           </div>
-        })
-      }
+        );
+      })}
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
 
 
----------axios.get se data receive kr rhe jo api se aa rha , yha humlog loreum pseum api se laa rhe
+---------fetch.get se data receive kr rhe jo api se aa rha , yha humlog loreum pseum api se laa rhe
+🔷 Flow of Execution (Step by Step)
+🟢 Step 1: Page Load
+Component render होता है
+data = [] (empty)
+🟢 Step 2: Button Click
+
+👉 User clicks:
+
+getdata()
+🟢 Step 3: Fetch API Call
+const response = await fetch(URL);
+
+👉 Request goes to API
+👉 API sends response
+
+🟢 Step 4: Convert Data
+const data = await response.json();
+
+👉 Important 🔥
+
+Fetch gives raw response
+We convert it into JSON
+🟢 Step 5: Store Data
+setdata(data);
+
+👉 Data saved in state
+👉 Component re-renders
+
+🟢 Step 6: Display Data
+data.map(...)
+
+👉 Loop runs
+👉 Images + author show on screen
+
 
 
 
@@ -1322,3 +1476,53 @@ function About() {
 
 export default About;
 
+
+
+
+
+🔷 What is Lazy Loading Image?
+🎯 Interview Answer
+
+👉 “Lazy loading images means loading images only when they come into the visible area (viewport), instead of loading all images at once.”
+
+🔹 Simple Meaning
+
+👉 Image load tab hoga jab user usko dekhega
+
+🔸 Real Life Example
+
+👉 Instagram scroll karte ho 📱
+👉 Sab images ek saath load nahi hoti
+👉 Scroll karte hi next images load hoti hain
+
+👉 That is lazy loading
+
+🔷 Why Lazy Loading?
+
+Without ❌
+
+All images load at once
+Website slow ho jati hai
+
+With Lazy Loading ✅
+
+Only visible images load
+Faster page load 🚀
+Data saving
+🔷 Method 1: Simple HTML (Easiest)
+<img src="image.jpg" loading="lazy" alt="img" />
+
+👉 Browser automatically lazy load karega
+
+🔷 React Example
+function App() {
+  return (
+    <div>
+      <img
+        src="https://picsum.photos/300"
+        loading="lazy"
+        alt="random"
+      />
+    </div>
+  );
+}
