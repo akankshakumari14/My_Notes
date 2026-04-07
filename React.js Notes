@@ -64,6 +64,7 @@ When the data (state/props) changes, React:creates a new virtual DOM first .Comp
 React then updates only the changed parts in the real DOM — not the whole page.
 jbv koi action (like click, input, etc.) hota to new virtual dom bnta.
 ->“Reconciliation is the process where React compares Virtual DOM with Real DOM and updates only the changed elements.”
+i.e,   react -> virtual dom -> new virtual dom after action performed -> compares new with old ->  different part is upadted in the react.
 
 What is ES6?
 ES6 stands for ECMAScript 6.
